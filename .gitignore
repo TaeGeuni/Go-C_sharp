@@ -1,0 +1,12 @@
+# 🦀 Rust
+**/target/
+**/*.rs.bk
+Cargo.lock
+
+# 🟢 Go (혹시 go build로 생성될 수 있는 바이너리 파일 무시)
+**/*.exe
+**/*.out
+
+# 💻 OS (맥북이나 윈도우 환경에서 자동 생성되는 찌꺼기 파일 무시)
+.DS_Store
+Thumbs.db
