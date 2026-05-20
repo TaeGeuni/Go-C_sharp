@@ -38,4 +38,9 @@ chmod +x create_problem.sh
 ./create_problem.sh <분류명> <문제명>
 ```
 
+3. 사용 예시
+```bash
+./create_problem.sh hash-table 0001-two-sum
+```
+
 위 명령어를 실행하면 `hash-table/0001-two-sum` 폴더가 생성되며, 그 안에 실행 가능한 C# 프로젝트(`.csproj`, `Program.cs`), Go 템플릿(`main.go`), 그리고 문제 풀이를 기록할 마크다운 노트(`note.md`)가 즉시 세팅됩니다.
