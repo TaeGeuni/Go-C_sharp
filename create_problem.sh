@@ -23,9 +23,9 @@ fi
 echo "🚀 [$PROBLEM] 문제 환경 세팅을 시작합니다..."
 
 # 3. C# 콘솔 프로젝트 생성 (.csproj 및 Program.cs 자동 생성)
-# C#은 폴더명에 숫자나 하이픈이 들어가도 프로젝트 생성에 문제가 없습니다.
+# --quiet 옵션 제거
 cd "$CATEGORY" || exit
-dotnet new console -n "$PROBLEM" -o "$PROBLEM" --quiet
+dotnet new console -n "$PROBLEM" -o "$PROBLEM"
 cd "$PROBLEM" || exit
 
 # C# 기본 템플릿 덮어쓰기 (최상위 문 사용)
@@ -43,7 +43,7 @@ package main
 import "fmt"
 
 func main() {
-    fmt.Println("Hello, $PROBLEM!")
+    fmt.Println("Hello, $PROBLEM!");
 }
 EOF
 
