@@ -1,7 +1,7 @@
-# 🦀 Rust
-**/target/
-**/*.rs.bk
-Cargo.lock
+# 🟩 C# (.NET)
+# 빌드 시 자동 생성되는 바이너리 및 중간 파일 폴더 무시
+**/bin/
+**/obj/
 
 # 🟢 Go (혹시 go build로 생성될 수 있는 바이너리 파일 무시)
 **/*.exe

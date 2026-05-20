@@ -11,11 +11,6 @@ CATEGORY=$1
 PROBLEM=$2
 TARGET_DIR="$CATEGORY/$PROBLEM"
 
-# 🌟 추가된 부분: Rust 패키지 이름 규칙 우회
-# 숫자로 시작하지 못하게 앞에 'p'를 붙이고, Rust가 싫어하는 하이픈(-)을 언더스코어(_)로 바꿉니다.
-# 예: 0001-two-sum -> p0001_two_sum
-PKG_NAME="p${PROBLEM//-/_}"
-
 # 1. 분류(카테고리) 폴더가 없으면 생성
 mkdir -p "$CATEGORY"
 
@@ -27,11 +22,19 @@ fi
 
 echo "🚀 [$PROBLEM] 문제 환경 세팅을 시작합니다..."
 
-# 3. Rust 패키지 생성 (Cargo)
-# --name 옵션을 주어 폴더명은 그대로, 패키지명만 합법적으로 만듭니다.
+# 3. C# 콘솔 프로젝트 생성 (.csproj 및 Program.cs 자동 생성)
+# C#은 폴더명에 숫자나 하이픈이 들어가도 프로젝트 생성에 문제가 없습니다.
 cd "$CATEGORY" || exit
-cargo new "$PROBLEM" --name "$PKG_NAME" --quiet
+dotnet new console -n "$PROBLEM" -o "$PROBLEM" --quiet
 cd "$PROBLEM" || exit
+
+# C# 기본 템플릿 덮어쓰기 (최상위 문 사용)
+cat <<EOF > Program.cs
+// $PROBLEM
+using System;
+
+Console.WriteLine("Hello, $PROBLEM!");
+EOF
 
 # 4. Go 기본 템플릿 생성
 cat <<EOF > main.go
@@ -57,9 +60,11 @@ cat <<EOF > note.md
 * **공간 복잡도:** $O()$
 
 ### 핵심 아이디어
-* ## 🏃‍♂️ 코드 실행
+* 
+
+## 🏃‍♂️ 코드 실행
 * **Go:** \`go run main.go\`
-* **Rust:** \`cargo run\` (현재 디렉토리에서)
+* **C#:** \`dotnet run\` (현재 디렉토리에서)
 EOF
 
 echo "✅ 세팅 완료! ($TARGET_DIR)"
