@@ -21,3 +21,21 @@ AlgorithmProblem/
         ├── Program.cs             # C# 코드 (또는 Solution.cs)
         ├── main.go                # Go 코드
         └── note.md                # 문제 접근법 및 복잡도 분석 노트
+```
+---
+
+## ⚙️ 스크립트 사용법 (문제 세팅 자동화)
+새로운 문제를 풀 때마다 일일이 폴더와 템플릿 파일을 만들 필요 없이 `create_problem.sh` 스크립트를 사용해 환경을 자동 구성합니다.
+
+1. 스크립트 실행 권한 부여 (최초 1회만)
+```bash
+chmod +x create_problem.sh
+```
+
+2. 스크립트 실행
+분류(카테고리) 이름과 문제 이름을 인자로 넘겨줍니다.
+```bash
+./create_problem.sh <분류명> <문제명>
+```
+
+위 명령어를 실행하면 `hash-table/0001-two-sum` 폴더가 생성되며, 그 안에 실행 가능한 C# 프로젝트(`.csproj`, `Program.cs`), Go 템플릿(`main.go`), 그리고 문제 풀이를 기록할 마크다운 노트(`note.md`)가 즉시 세팅됩니다.
