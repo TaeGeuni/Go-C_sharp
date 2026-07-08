@@ -1,7 +1,7 @@
 # 1288-Remove-Covered-Intervals
 
 ## 💡 문제 링크
-* [LeetCode - 문제 이름](URL)
+* [LeetCode - 문제 이름](https://leetcode.com/problems/remove-covered-intervals/)
 
 ## 🧠 문제 접근 및 풀이
 * **알고리즘 분류:** greedy
