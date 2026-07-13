@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # 인자 개수 확인
 if [ "$#" -ne 2 ]; then
     echo "💡 사용법: ./create_problem.sh <분류명> <문제명>"
@@ -22,32 +20,33 @@ fi
 
 echo "🚀 [$PROBLEM] 문제 환경 세팅을 시작합니다..."
 
-# 3. C# 콘솔 프로젝트 생성 (.csproj 및 Program.cs 자동 생성)
-# --quiet 옵션 제거
-cd "$CATEGORY" || exit
-dotnet new console -n "$PROBLEM" -o "$PROBLEM"
-cd "$PROBLEM" || exit
+# 3. 문제 대상 폴더 생성 및 이동
+mkdir -p "$TARGET_DIR"
+cd "$TARGET_DIR" || exit
 
-# C# 기본 템플릿 덮어쓰기 (최상위 문 사용)
-cat <<EOF > Program.cs
-// $PROBLEM
-using System;
+# 4. Python 기본 템플릿 생성
+cat <<EOF > main.py
+# $PROBLEM
 
-Console.WriteLine("Hello, $PROBLEM!");
+def main():
+    print("Hello, $PROBLEM!")
+
+if __name__ == "__main__":
+    main()
 EOF
 
-# 4. Go 기본 템플릿 생성
+# 5. Go 기본 템플릿 생성
 cat <<EOF > main.go
 package main
 
 import "fmt"
 
 func main() {
-    fmt.Println("Hello, $PROBLEM!");
+    fmt.Println("Hello, $PROBLEM!")
 }
 EOF
 
-# 5. 마크다운 노트 템플릿 생성
+# 6. 마크다운 노트 템플릿 생성 (실행 명령어 Python으로 변경)
 cat <<EOF > note.md
 # $PROBLEM
 
@@ -56,15 +55,13 @@ cat <<EOF > note.md
 
 ## 🧠 문제 접근 및 풀이
 * **알고리즘 분류:** $CATEGORY
-* **시간 복잡도:** $O()$
-* **공간 복잡도:** $O()$
+* **시간 복잡도:** O()
+* **공간 복잡도:** O()
 
 ### 핵심 아이디어
-* 
-
-## 🏃‍♂️ 코드 실행
+* ## 🏃‍♂️ 코드 실행
 * **Go:** \`go run main.go\`
-* **C#:** \`dotnet run\` (현재 디렉토리에서)
+* **Python:** \`python main.py\` (또는 \`python3 main.py\`)
 EOF
 
 echo "✅ 세팅 완료! ($TARGET_DIR)"
