@@ -1,7 +1,7 @@
 # 0038-Count-and-Say
 
 ## 💡 문제 링크
-* [LeetCode - 문제 이름](URL)
+* [LeetCode - 문제 이름](https://leetcode.com/problems/count-and-say)
 
 ## 🧠 문제 접근 및 풀이
 * **알고리즘 분류:** simulation
