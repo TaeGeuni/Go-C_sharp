@@ -15,4 +15,7 @@ class Solution:
                     count = 1
             buf.append(str(count))
             buf.append(now)
+
+            res = "".join(buf)
+
         return res
