@@ -1,34 +1,15 @@
 package main
 
-func minSubArrayLen(target int, nums []int) int {
-	total := 0
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
 
-	for i := 0; i < len(nums); i++ {
-		total += nums[i]
-	}
+func (Ln *ListNode) ChangeNode() {
 
-	if total < target {
-		return 0
-	}
-	res := len(nums)
-	left, right := 0, len(nums)-1
+}
 
-	for left <= right {
-		if nums[left] < nums[right] {
-			total -= nums[left]
-			left++
-		} else if nums[left] > nums[right] {
-			total -= nums[right]
-			right--
-		} else if nums[left] == nums[right]&&{
+func swapPairs(head *ListNode) *ListNode {
 
-		}
-
-		if total < target {
-			break
-		}
-		res--
-	}
-
-	return res
+	return nil
 }
